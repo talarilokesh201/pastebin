@@ -13,7 +13,7 @@ router.post('/api/pastes', async (req, res) => {
     let paste;
     try {
         paste = await Paste.create({
-            url: 'http'+':'+'//'+process.env.BASE_URL+'/p/'+uid,
+            url: process.env.BASE_URL+'/p/'+uid,
             content,
             max_views,
             expires,
@@ -118,6 +118,7 @@ router.get('/api/pastes/:id', async (req, res) => {
 router.get('/api/healthz', async (req, res) => {
     return res.status(200).json({ok: true});
 })
+
 
 
 module.exports = router;
